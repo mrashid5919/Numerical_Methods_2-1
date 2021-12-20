@@ -32,7 +32,7 @@ def newton_raphson(root,error_precision):
         relative_approx_error=math.fabs(((root2-root)/root)*100)
         root=root2
         if iteration<10:
-            info = "Iteration {0} \t\t\t{1}\t\t{2}".format(iteration, root,relative_approx_error)
+            info = "Iteration {0} \t\t\t{1}\t\t{2}".format(iteration, root,relative_approx_error * 100)
         else:
             info = "Iteration {0}\t\t\t{1}\t\t{2}".format(iteration, root,relative_approx_error * 100)
         print(info)
