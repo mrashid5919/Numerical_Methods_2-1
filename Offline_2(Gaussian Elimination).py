@@ -44,7 +44,7 @@ def GaussianElimination(A,B,pivot=True,ShowAll=True):
             B[idx]=B[k]
             B[k]=temp
 
-            if idx!=k:
+            if idx!=k and ShowAll==True:
                 print("Coefficient Matrix: ")
                 for i in range(n):
                     for j in range(n):
@@ -86,6 +86,7 @@ def GaussianElimination(A,B,pivot=True,ShowAll=True):
             sum += A[i, j] * ans[j]
         ans[i] = (B[i] - sum) / A[i, i]
 
+    print("The solution matrix:")
     for i in range(n):
         x = "{:.4f}".format(ans[i])
         print(x)
