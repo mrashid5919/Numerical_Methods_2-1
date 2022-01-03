@@ -20,6 +20,21 @@ def take_input():
 
     return n
 
+def print_intermediate(A,B):
+    print("Coefficient Matrix: ")
+    for i in range(n):
+        for j in range(n):
+            t = "{:.4f}".format(A[i, j])
+            print(t, end=" ")
+        print()
+    print()
+
+    print("Right hand constant Matrix: ")
+    for i in range(n):
+        t2 = "{:.4f}".format(B[i])
+        print(t2)
+    print()
+
 def GaussianElimination(A,B,pivot=True,ShowAll=True):
     flag=True
     #Elimination
@@ -48,18 +63,7 @@ def GaussianElimination(A,B,pivot=True,ShowAll=True):
             B[k]=temp
 
             if idx!=k and ShowAll==True:
-                print("Coefficient Matrix: ")
-                for i in range(n):
-                    for j in range(n):
-                        t="{:.4f}".format(A[i,j])
-                        print(t,end=" ")
-                    print()
-                print()
-
-                print("Right hand constant Matrix: ")
-                for i in range(n):
-                    t2="{:.4f}".format(B[i])
-                    print(t2)
+                print_intermediate(A,B)
 
         for i in range(k+1,n):
             if(A[k,k]==0):
@@ -71,19 +75,7 @@ def GaussianElimination(A,B,pivot=True,ShowAll=True):
                 A[i,j]=A[i,j]-A[k,j]*factor
             B[i]=B[i]-B[k]*factor
             if(ShowAll==True):
-                print("Coefficient Matrix: ")
-                for i in range(n):
-                    for j in range(n):
-                        t = "{:.4f}".format(A[i, j])
-                        print(t, end=" ")
-                    print()
-                print()
-
-                print("Right hand constant Matrix: ")
-                for i in range(n):
-                    t2 = "{:.4f}".format(B[i])
-                    print(t2)
-                print()
+                print_intermediate(A,B)
 
     if(flag==True):
     # Back substitution
