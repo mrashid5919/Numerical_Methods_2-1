@@ -21,8 +21,11 @@ def take_input():
     return n
 
 def GaussianElimination(A,B,pivot=True,ShowAll=True):
+    flag=True
     #Elimination
     for k in range(n-1):
+        if flag==False:
+            break
         if pivot==True:
             #Partial pivoting
             tempA=[]
@@ -59,6 +62,10 @@ def GaussianElimination(A,B,pivot=True,ShowAll=True):
                     print(t2)
 
         for i in range(k+1,n):
+            if(A[k,k]==0):
+                print("Division by zero occured")
+                flag=False
+                break
             factor=A[i,k]/A[k,k]
             for j in range(k,n):
                 A[i,j]=A[i,j]-A[k,j]*factor
@@ -78,19 +85,19 @@ def GaussianElimination(A,B,pivot=True,ShowAll=True):
                     print(t2)
                 print()
 
+    if(flag==True):
     # Back substitution
-    ans[n - 1] = B[n - 1] / A[n - 1, n - 1]
-    for i in range(n - 2, -1, -1):
-        sum = 0
-        for j in range(i + 1, n):
-            sum += A[i, j] * ans[j]
-        ans[i] = (B[i] - sum) / A[i, i]
+        ans[n - 1] = B[n - 1] / A[n - 1, n - 1]
+        for i in range(n - 2, -1, -1):
+            sum = 0
+            for j in range(i + 1, n):
+                sum += A[i, j] * ans[j]
+            ans[i] = (B[i] - sum) / A[i, i]
 
-    print("The solution matrix:")
-    for i in range(n):
-        x = "{:.4f}".format(ans[i])
-        print(x)
-
+        print("The solution matrix:")
+        for i in range(n):
+            x = "{:.4f}".format(ans[i])
+            print(x)
 #From the equation of the circle and the coordinates of the three points we get the following system of linear equations
 
 #2a + 0b - c = 4
